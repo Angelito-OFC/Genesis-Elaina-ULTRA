@@ -8,28 +8,21 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let videoUrl = text.trim(); // Solo se espera la URL como entrada
 
     try {
-        // Consultar la API de SaveFrom para obtener la URL del audio
-        let res = await fetch(`https://savefrom.net/api/api.php?url=${encodeURIComponent(videoUrl)}`);
+        // Usar la API de YtMp3 para obtener el enlace de descarga MP3
+        let res = await fetch(`https://ytmp3.cc/api/widget/convert?url=${encodeURIComponent(videoUrl)}`);
         
         if (!res.ok) {
-            throw new Error(`Error al contactar la API de SaveFrom. Código de respuesta: ${res.status}`);
+            throw new Error(`Error al contactar la API de YtMp3. Código de respuesta: ${res.status}`);
         }
 
-        // Intentamos obtener el resultado JSON
-        let result;
-        try {
-            result = await res.json();
-        } catch (e) {
-            // Si la respuesta no es JSON, es probable que sea una página HTML
-            throw new Error('La respuesta no es un JSON válido. Puede ser una página de error o de redirección.');
-        }
+        let result = await res.json();
 
-        // Verificar si se obtuvo un enlace de descarga del audio
-        if (!result?.url) {
+        // Verificar si la respuesta contiene la URL de descarga del audio
+        if (!result?.link) {
             throw new Error('No se encontró un enlace válido para descargar el audio.');
         }
 
-        let audioUrl = result.url;
+        let audioUrl = result.link;
 
         // Descargar el audio desde el enlace proporcionado
         let audioRes = await fetch(audioUrl);
