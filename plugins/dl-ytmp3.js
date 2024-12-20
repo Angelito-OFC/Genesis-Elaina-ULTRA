@@ -1,6 +1,27 @@
+import fetch from 'node-fetch'
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m)
+  
+  try {
+    let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${text}`)).json()
+    let dl_url = api.data.dl
+    let title = api.data.title  // Aquí extraemos el título
+
+    await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+handler.command = ['ytmp3']
+
+export default handler
+
+
 
 // *[ ❀ YTMP3 ]*
-import fetch from 'node-fetch'
+/* import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 if (!text) return conn.reply(m.chat, `❀ Ingresa un  link de youtube`, m)
@@ -18,4 +39,4 @@ console.error(error)
 
 handler.command = ['ytmp3']
 
-export default handler
+export default handler */
