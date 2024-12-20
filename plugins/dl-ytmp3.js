@@ -8,43 +8,27 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let url = text.trim(); // Solo se espera la URL como entrada
 
     try {
-        // Obtener información del video
-        let res = await fetch(`https://ytdownloader.nvlgroup.my.id/info?url=${url}`);
+        // Consultar la API para descargar el audio en MP3
+        let res = await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${url}`);
         if (!res.ok) throw new Error('No se pudo obtener la información del video.');
-        let info = await res.json();
+        let result = await res.json();
 
-        let title = info.title || 'Sin título';
-        let duration = info.duration || 'Desconocida';
-        let audioDownloadLink = info.audio?.[0]?.url; // Ruta para descargar el audio
-
-        if (!audioDownloadLink) {
+        if (!result.status || !result.result || !result.result.url) {
             throw new Error('No se encontró un enlace válido para descargar el audio.');
         }
 
-        // Descargar el audio
-        let audioRes = await fetch(audioDownloadLink);
+        let audioUrl = result.result.url;
+
+        // Descargar el audio desde el enlace proporcionado
+        let audioRes = await fetch(audioUrl);
         if (!audioRes.ok) throw new Error('No se pudo descargar el audio.');
-
         let audioBuffer = await audioRes.buffer();
-        let audioSize = audioBuffer.length / (1024 * 1024); // Tamaño en MB
-
-        // Crear mensaje informativo
-        let message = `
-[YTMP3 DESCARGADOR]
-🎵 *Título:* ${title}
-🔗 *Enlace:* [Ver aquí](${url})
-⏱️ *Duración:* ${duration} minutos
-📦 *Tamaño del archivo:* ${audioSize.toFixed(2)} MB
-🎧 *Formato:* MP3
-`;
-
-        await conn.reply(m.chat, message, m);
 
         // Enviar el archivo de audio
         await conn.sendMessage(m.chat, {
             document: audioBuffer,
             mimetype: 'audio/mpeg',
-            fileName: `${title}.mp3`
+            fileName: `audio.mp3`
         });
     } catch (e) {
         console.error(e);
@@ -54,7 +38,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
 // Configuración del comando
 handler.help = ['ytmp3'];
-handler.command = ['ytmp3', 'ytv', 'ytvideo']; // Mantener los alias originales
+handler.command = ['ytmp3', 'ytaudio'];
 handler.tags = ['descargas'];
 
 export default handler;
