@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat, `🤍 Ingresa un link de youtube`, m, fake)
+  if (!text) return conn.reply(m.chat, `🤍 \`Ingresa un link de youtube\``, m, fake)
   await m.react('🕓')
 
   try {
