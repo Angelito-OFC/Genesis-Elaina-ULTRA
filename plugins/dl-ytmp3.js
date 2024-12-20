@@ -9,7 +9,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     try {
         // Consultar la API para descargar el audio en MP3
-        let res = await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${args[0]}`);
+        let res = await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${url}`);
         if (!res.ok) throw new Error('No se pudo obtener la información del video.');
         let result = await res.json();
 
