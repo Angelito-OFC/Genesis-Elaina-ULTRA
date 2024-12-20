@@ -5,23 +5,24 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         return conn.reply(m.chat, `Por favor, utiliza el formato: ${usedPrefix}${command} <url>`, m);
     }
 
-    let url = text.trim(); // Solo se espera la URL como entrada
+    let videoUrl = text.trim(); // Solo se espera la URL como entrada
 
     try {
-        // Consultar la API para descargar el audio en MP3
-        let res = await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${url}`);
+        // Consultar la API de SaveFrom para obtener la URL del audio
+        let res = await fetch(`https://savefrom.net/api/api.php?url=${encodeURIComponent(videoUrl)}`);
         
         if (!res.ok) {
-            throw new Error(`Error al contactar la API. Código de respuesta: ${res.status}`);
+            throw new Error(`Error al contactar la API de SaveFrom. Código de respuesta: ${res.status}`);
         }
 
         let result = await res.json();
 
-        if (!result.status || !result.result || !result.result.url) {
-            throw new Error('No se encontró un enlace válido para descargar el audio. La API podría no estar respondiendo correctamente.');
+        // Verificar si se obtuvo un enlace de descarga del audio
+        if (!result?.url) {
+            throw new Error('No se encontró un enlace válido para descargar el audio.');
         }
 
-        let audioUrl = result.result.url;
+        let audioUrl = result.url;
 
         // Descargar el audio desde el enlace proporcionado
         let audioRes = await fetch(audioUrl);
