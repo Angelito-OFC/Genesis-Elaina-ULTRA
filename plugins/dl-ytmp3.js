@@ -10,11 +10,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     try {
         // Consultar la API para descargar el audio en MP3
         let res = await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${url}`);
-        if (!res.ok) throw new Error('No se pudo obtener la información del video.');
+        
+        if (!res.ok) {
+            throw new Error(`Error al contactar la API. Código de respuesta: ${res.status}`);
+        }
+
         let result = await res.json();
 
         if (!result.status || !result.result || !result.result.url) {
-            throw new Error('No se encontró un enlace válido para descargar el audio.');
+            throw new Error('No se encontró un enlace válido para descargar el audio. La API podría no estar respondiendo correctamente.');
         }
 
         let audioUrl = result.result.url;
@@ -32,7 +36,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         });
     } catch (e) {
         console.error(e);
-        return conn.reply(m.chat, 'No se pudo completar la descarga. Intenta nuevamente más tarde.', m);
+        return conn.reply(m.chat, `Error: ${e.message}`, m);
     }
 };
 
