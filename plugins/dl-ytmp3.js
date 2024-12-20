@@ -15,7 +15,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
             throw new Error(`Error al contactar la API de SaveFrom. Código de respuesta: ${res.status}`);
         }
 
-        let result = await res.json();
+        // Intentamos obtener el resultado JSON
+        let result;
+        try {
+            result = await res.json();
+        } catch (e) {
+            // Si la respuesta no es JSON, es probable que sea una página HTML
+            throw new Error('La respuesta no es un JSON válido. Puede ser una página de error o de redirección.');
+        }
 
         // Verificar si se obtuvo un enlace de descarga del audio
         if (!result?.url) {
