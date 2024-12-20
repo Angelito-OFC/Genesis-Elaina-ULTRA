@@ -9,16 +9,20 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     try {
         // Obtener información del video
-        let res = await fetch(`https://api.yourdownloader.com/info?url=${url}`); // Cambia a una API funcional
+        let res = await fetch(`https://ytdownloader.nvlgroup.my.id/info?url=${url}`);
         if (!res.ok) throw new Error('No se pudo obtener la información del video.');
         let info = await res.json();
 
         let title = info.title || 'Sin título';
         let duration = info.duration || 'Desconocida';
+        let audioDownloadLink = info.audio?.[0]?.url; // Ruta para descargar el audio
 
-        // Construir URL de descarga de audio
-        let downloadUrl = `https://api.yourdownloader.com/download?url=${url}&format=mp3`; // Cambiar a una API funcional
-        let audioRes = await fetch(downloadUrl);
+        if (!audioDownloadLink) {
+            throw new Error('No se encontró un enlace válido para descargar el audio.');
+        }
+
+        // Descargar el audio
+        let audioRes = await fetch(audioDownloadLink);
         if (!audioRes.ok) throw new Error('No se pudo descargar el audio.');
 
         let audioBuffer = await audioRes.buffer();
