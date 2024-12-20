@@ -19,8 +19,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } else if (command === 'ytmp4' || command === 'ytv' || command === 'fgmp4') {
       let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${text}`)).json()
       let dl_url = api.data.dl
+      let title = api.data.title
 
-      await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: null }, { quoted: m })
+      await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: ${title} }, { quoted: m })
       await m.react('✅')
     }
   } catch (error) {
