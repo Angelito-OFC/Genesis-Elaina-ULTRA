@@ -54,7 +54,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
 // Configuración del comando
 handler.help = ['ytmp3'];
-handler.command = ['ytmp3', 'ytaudio'];
+handler.command = ['ytmp3', 'ytv', 'ytvideo']; // Mantener los alias originales
 handler.tags = ['descargas'];
 
 export default handler;
