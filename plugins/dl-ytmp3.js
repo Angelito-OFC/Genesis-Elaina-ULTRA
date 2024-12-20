@@ -8,21 +8,25 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let videoUrl = text.trim(); // Solo se espera la URL como entrada
 
     try {
-        // Usar la API de YtMp3 para obtener el enlace de descarga MP3
-        let res = await fetch(`https://ytmp3.cc/api/widget/convert?url=${encodeURIComponent(videoUrl)}`);
+        // Construimos la URL para la API de Zeemo sin API key
+        let apiUrl = `https://zeemo.ai/es/downloadVideo?fromPage=3&videoInfoKey=1734717425992&index=6&langCode=es&url=${encodeURIComponent(videoUrl)}`;
         
+        // Hacer la solicitud a la API de Zeemo
+        let res = await fetch(apiUrl);
+
         if (!res.ok) {
-            throw new Error(`Error al contactar la API de YtMp3. Código de respuesta: ${res.status}`);
+            throw new Error(`Error al contactar la API de Zeemo. Código de respuesta: ${res.status}`);
         }
 
+        // Intentamos obtener la respuesta como JSON
         let result = await res.json();
 
-        // Verificar si la respuesta contiene la URL de descarga del audio
-        if (!result?.link) {
+        // Verificamos si la API devolvió un enlace de descarga del audio
+        if (!result?.downloadUrl) {
             throw new Error('No se encontró un enlace válido para descargar el audio.');
         }
 
-        let audioUrl = result.link;
+        let audioUrl = result.downloadUrl;
 
         // Descargar el audio desde el enlace proporcionado
         let audioRes = await fetch(audioUrl);
