@@ -6,7 +6,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   try {
     if (command === 'ytmp3' || command === 'yta' || command === 'fgmp3') {
-      // Descargar audio
       let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${text}`)).json()
       let dl_url = api.data.dl
       let title = api.data.title
@@ -14,7 +13,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
       await m.react('✅')
     } else if (command === 'ytmp4' || command === 'ytv' || command === 'fgmp4') {
-      // Descargar video
       let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${text}`)).json()
       let dl_url = api.data.dl
 
