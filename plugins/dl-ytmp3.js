@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    // Validar entrada de texto
     if (!text || !text.trim()) {
         return conn.reply(m.chat, `Por favor, utiliza el formato: ${usedPrefix}${command} <url>`, m);
     }
@@ -10,15 +9,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     try {
         // Obtener información del video
-        let res = await fetch(`https://ytdownloader.nvlgroup.my.id/info?url=${url}`);
+        let res = await fetch(`https://api.yourdownloader.com/info?url=${url}`); // Cambia a una API funcional
         if (!res.ok) throw new Error('No se pudo obtener la información del video.');
         let info = await res.json();
 
         let title = info.title || 'Sin título';
         let duration = info.duration || 'Desconocida';
 
-        // Construir URL de descarga del audio
-        let downloadUrl = `https://ytdownloader.nvlgroup.my.id/download?url=${url}&format=mp3`;
+        // Construir URL de descarga de audio
+        let downloadUrl = `https://api.yourdownloader.com/download?url=${url}&format=mp3`; // Cambiar a una API funcional
         let audioRes = await fetch(downloadUrl);
         if (!audioRes.ok) throw new Error('No se pudo descargar el audio.');
 
@@ -45,7 +44,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         });
     } catch (e) {
         console.error(e);
-        return conn.reply(m.chat, 'Ocurrió un error. Por favor, intenta nuevamente más tarde.', m);
+        return conn.reply(m.chat, 'No se pudo completar la descarga. Intenta nuevamente más tarde.', m);
     }
 };
 
