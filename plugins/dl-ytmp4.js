@@ -8,8 +8,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${text}`)).json()
     let dl_url = api.data.dl
 
-    await m.react('✅')
     await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: null }, { quoted: m })
+await m.react('✅')
   } catch (error) {
     console.error(error)
   }
