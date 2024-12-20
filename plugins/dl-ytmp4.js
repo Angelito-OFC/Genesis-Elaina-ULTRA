@@ -3,11 +3,11 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     // Validar entrada de texto
     if (!text || !text.trim()) {
-        return conn.reply(m.chat, `Por favor, utiliza el formato: ${usedPrefix}${command} <url> [resolución]`, m);
+        return conn.reply(m.chat, `Por favor, utiliza el formato: ${usedPrefix}${command} <url>`, m);
     }
 
-    let [url, resolution] = text.split(' ');
-    resolution = resolution || '480'; // Resolución predeterminada
+    let url = text.trim(); // Solo se espera la URL como entrada
+    let resolution = '360'; // Resolución predeterminada
 
     try {
         // Obtener información del video
@@ -33,7 +33,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 🔗 *Enlace:* [Ver aquí](${url})
 ⏱️ *Duración:* ${duration} minutos
 📦 *Tamaño del archivo:* ${videoSize.toFixed(2)} MB
-🎨 *Resolución utilizada:* ${resolution}
+🎨 *Resolución utilizada:* ${resolution}p
 `;
 
         await conn.reply(m.chat, message, m);
@@ -64,7 +64,6 @@ handler.command = ['ytmp4', 'ytv', 'ytvideo'];
 handler.tags = ['descargas'];
 
 export default handler;
-
 
 
 /* import fetch from 'node-fetch';
