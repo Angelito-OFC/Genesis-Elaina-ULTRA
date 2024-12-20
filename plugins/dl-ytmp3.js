@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${text}`)).json()
     let dl_url = api.data.dl
 
-    conn.sendMessage(m.chat, { audio: { url: dl_url }, mimetype: "audio/mp3", ptt: true }, { quoted: m })
+  await conn.sendMessage(m.chat, { audio: { url: dl_url }, mimetype: "audio/mp3", ptt: true }, { quoted: m })
   } catch (error) {
     console.error(error)
   }
