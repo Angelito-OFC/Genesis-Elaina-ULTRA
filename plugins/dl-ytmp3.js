@@ -18,15 +18,15 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     • *Uploaded :* » ${videoInfo.ago}
     • *URL :* » ${videoInfo.url}
 
-> ${espera}`;
+> espera un momento`;
 
-m.react(rwait)
+m.react(🕓)
   conn.sendMessage(m.chat, {
     image: { url: videoInfo.thumbnail },
     caption: body,
   }, { quoted: fkontak });
 
-m.react(done)
+m.react(✅)
   let result;
   try {
     if (command === 'play' || command === 'yta' || command === 'ytmp3') {
@@ -47,7 +47,7 @@ let url_dl = isVideo ? result.data.download.url : result.data
 
   } catch (error) {
 m.react('✖️')
-    throw "${errorm2}";
+    throw "error";
   }
 };
 
