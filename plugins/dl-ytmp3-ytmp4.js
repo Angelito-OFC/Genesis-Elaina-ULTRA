@@ -2,7 +2,7 @@
 - Downloader ytmp3 y ytmp4 By Angel-OFC 
 - https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
 */
-import fetch from 'node-fetch'
+/* import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return conn.reply(m.chat, `*\`Ingresa un link de youtube\`*`, m, fake)
@@ -33,4 +33,4 @@ handler.help = ['ytmp3 *<url>*', 'ytmp4 *<url>*'];
 handler.tags = ['downloader'];
 handler.command = ['ytmp3', 'yta', 'fgmp3', 'ytmp4', 'ytv', 'fgmp4']
 
-export default handler
+export default handler */
