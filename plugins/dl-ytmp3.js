@@ -1,4 +1,4 @@
-/* import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return conn.reply(m.chat, `🤍 Ingresa un link de youtube`, m)
@@ -20,4 +20,4 @@ handler.help = ['ytmp3 *<url>*'];
 handler.tags = ['downloader'];
 handler.command = ['ytmp3', 'yta', 'fgmp3']
 
-export default handler */
+export default handler
