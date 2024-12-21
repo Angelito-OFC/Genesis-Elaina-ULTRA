@@ -1,36 +1,66 @@
 /* 
-- Downloader ytmp3 y ytmp4 By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+
+[ Canal Principal ] :
+https://whatsapp.com/channel/0029VaeQcFXEFeXtNMHk0D0n
+
+[ Canal Rikka Takanashi Bot ] :
+https://whatsapp.com/channel/0029VaksDf4I1rcsIO6Rip2X
+
+[ Canal StarlightsTeam] :
+https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
+
+[ HasumiBot FreeCodes ] :
+https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 */
-/* import fetch from 'node-fetch'
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat, `*\`Ingresa un link de youtube\`*`, m, fake)
-  await m.react('🕓')
+// *[ ❀ PLAY ]*
+import fetch from "node-fetch";
+import yts from "yt-search";
 
-  try {
-    if (command === 'ytmp3' || command === 'yta' || command === 'fgmp3') {
-      let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp3?url=${text}`)).json()
-      let dl_url = api.data.dl
-      let title = api.data.title
-
-      await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
-      await m.react('✅')
-    } else if (command === 'ytmp4' || command === 'ytv' || command === 'fgmp4') {
-      let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${text}`)).json()
-      let dl_url = api.data.dl
-
-      await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: null }, { quoted: m })
-      await m.react('✅')
-    }
-  } catch (error) {
-    console.error(error)
-    await m.react('❌')
-  }
+let handler = async (m, { conn, text }) => {
+if (!text) {
+return m.reply("❀ Ingresa el texto de lo que quieres buscar")
 }
 
-handler.help = ['ytmp3 *<url>*', 'ytmp4 *<url>*'];
-handler.tags = ['downloader'];
-handler.command = ['ytmp3', 'yta', 'fgmp3', 'ytmp4', 'ytv', 'fgmp4']
+let ytres = await yts(text)
+let video = ytres.videos[0]
+  
+if (!video) {
+return m.reply("❀ Video no encontrado")
+}
 
-export default handler */
+let { title, thumbnail, timestamp, views, ago, url } = video
+
+let vistas = parseInt(views).toLocaleString("es-ES") + " vistas"
+
+let HS = `- *Duración:* ${timestamp}
+- *Vistas:* ${vistas}
+- *Subido:* ${ago}
+- *Enlace:* ${url}`
+
+let thumb = (await conn.getFile(thumbnail))?.data;
+
+let JT = {
+contextInfo: {
+externalAdReply: {
+title: title, body: "",
+mediaType: 1, previewType: 0,
+mediaUrl: url, sourceUrl: url,
+thumbnail: thumb, renderLargerThumbnail: true,
+}}}
+
+await conn.reply(m.chat, HS, m, JT)
+
+try {
+let api = await fetch(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${url}`);
+let json = await api.json()
+let { download } = json.result
+
+await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mimetype: "audio/mpeg", }, { quoted: m })
+} catch (error) {
+console.error(error)    
+}}
+
+handler.command = /^(playyt)$/i
+
+export default handler
