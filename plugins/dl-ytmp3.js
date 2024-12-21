@@ -24,7 +24,7 @@ m.react(🕓)
   conn.sendMessage(m.chat, {
     image: { url: videoInfo.thumbnail },
     caption: body,
-  }, { quoted: fkontak });
+  }, { quoted: m });
 
 m.react(✅)
   let result;
