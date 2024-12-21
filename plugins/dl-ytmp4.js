@@ -1,4 +1,4 @@
-/* import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return conn.reply(m.chat, `Ingresa un link de youtube`, m, fake)
@@ -19,4 +19,4 @@ handler.help = ['ytmp4 *<url>*'];
 handler.tags = ['downloader'];
 handler.command = ['ytmp4', 'ytv', 'fgmp4']
 
-export default handler */
+export default handler
