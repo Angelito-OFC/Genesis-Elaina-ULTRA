@@ -16,9 +16,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     • *Views :* » ${videoInfo.views}
     • *Duration :* » ${videoInfo.timestamp}
     • *Uploaded :* » ${videoInfo.ago}
-    • *URL :* » ${videoInfo.url}
-
-> espera un momento`;
+    • *URL :* » ${videoInfo.url}`;
 
 m.react(🕓)
   conn.sendMessage(m.chat, {
