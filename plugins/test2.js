@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-const handler = async (m, { args }) => {
+const handler = async (m, { args, conn }) => {
   const question = args.join(' ').trim();
-  const model = "llama-3.3-70b"; // Modelo predeterminado
+  const model = "llama-3.3-70b";
 
   if (!question) {
     return m.reply('❌ Por favor, proporciona una pregunta para el chatbot.', m);
+  }
+
+  if (!m.chat || typeof m.chat !== 'string') {
+    return m.reply('❌ Error: El destinatario no es válido.');
   }
 
   try {
@@ -49,7 +53,10 @@ const handler = async (m, { args }) => {
     const res = await axios.request(config);
     const chunks = res.data.split('\n').filter(chunk => chunk).map(chunk => JSON.parse(chunk));
     const answer = chunks.map(chunk => chunk.content).join('');
-    m.reply(`🤖 Respuesta: ${answer}`, m);
+    await conn.sendMessage(m.chat, {
+      text: `🤖 Respuesta: ${answer}`,
+      quoted: m,
+    });
   } catch (error) {
     console.error(error);
     m.reply('❌ Ocurrió un error al procesar tu solicitud.', m);
