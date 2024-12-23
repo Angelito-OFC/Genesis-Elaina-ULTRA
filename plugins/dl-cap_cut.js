@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import md5 from 'crypto-js/md5.js';
 const BASE_URL = 'https://3bic.com';
@@ -15,7 +14,7 @@ const handler = async (m, { args, conn }) => {
   const link = args[0]?.trim();
 
   if (!/^https?:\/\/(?:www\.)?capcut\.com\/t\/[a-zA-Z0-9_-]+\/?$/.test(link)) {
-    return m.reply('❌ Link tidak valid! Harus berupa link CapCut template.');
+    return m.reply('❌ ¡Enlace no válido! Debe ser un enlace de una plantilla de CapCut.', m);
   }
 
   try {
@@ -30,7 +29,7 @@ const handler = async (m, { args, conn }) => {
 
     const templateId = url.match(/template_id=(\d+)/)?.[1];
     if (!templateId) {
-      return m.reply('❌ Template ID tidak ditemukan!');
+      return m.reply('❌ ¡ID de plantilla no encontrado!', m);
     }
 
     const { data } = await axiosInstance.get(`/api/download/${templateId}`, {
@@ -41,19 +40,21 @@ const handler = async (m, { args, conn }) => {
       const videoUrl = `${BASE_URL}${data.originalVideoUrl}`;
       await conn.sendMessage(m.chat, {
         video: { url: videoUrl },
-        caption: 'Done ✅',
-        quoted: m,
+        caption: 'Hecho ✅',
+        quoted: m, // Aseguramos que el mensaje esté citado.
       });
     } else {
-      m.reply('Gagal mendapatkan video.');
+      m.reply('❌ Error al obtener el video.', m);
     }
   } catch (error) {
     console.error(error);
-    m.reply('Terjadi kesalahan saat memproses permintaan.');
+    m.reply('❌ Ocurrió un error al procesar la solicitud.', m);
   }
 };
-handler.command = ['capcut','cc'];
+
+handler.command = ['capcut', 'cc'];
 handler.tags = ['downloader'];
 handler.help = ['capcut url'];
 handler.limit = true;
+
 export default handler;
