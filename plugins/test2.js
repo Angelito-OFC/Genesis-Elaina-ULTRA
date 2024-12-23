@@ -9,7 +9,8 @@ const handler = async (m, { args, conn }) => {
   }
 
   if (!m.chat || typeof m.chat !== 'string') {
-    return m.reply('❌ Error: El destinatario no es válido.');
+    console.log('m.chat inválido:', m.chat);
+    return m.reply('❌ Error: El destinatario no es válido.', m);
   }
 
   try {
@@ -53,6 +54,7 @@ const handler = async (m, { args, conn }) => {
     const res = await axios.request(config);
     const chunks = res.data.split('\n').filter(chunk => chunk).map(chunk => JSON.parse(chunk));
     const answer = chunks.map(chunk => chunk.content).join('');
+
     await conn.sendMessage(m.chat, {
       text: `🤖 Respuesta: ${answer}`,
       quoted: m,
