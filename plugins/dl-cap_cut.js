@@ -42,7 +42,8 @@ const handler = async (m, { args, conn }) => {
       await conn.sendMessage(m.chat, {
         video: { url: videoUrl },
         caption: 'Done ✅',
-      });
+       { quoted: m });
+//      });
     } else {
       m.reply('Gagal mendapatkan video.');
     }
