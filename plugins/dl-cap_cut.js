@@ -41,7 +41,7 @@ const handler = async (m, { args, conn }) => {
       await conn.sendMessage(m.chat, {
         video: { url: videoUrl },
         caption: 'Hecho ✅',
-        quoted: m, // Aseguramos que el mensaje esté citado.
+        quoted: m,
       });
     } else {
       m.reply('❌ Error al obtener el video.', m);
