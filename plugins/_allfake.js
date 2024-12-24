@@ -118,7 +118,7 @@ global.fake = {
         // Fake 🤥
         global.ftroli = { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { itemCount: 9999999999999999999999999999999999999999999999999999999, status: 1, surface: 1, message: wm, orderTitle: wm, sellerJid: '0@s.whatsapp.net' } } }
 
-global.invitacion = { 
+global.invite = { 
     key: { 
         fromMe: false, 
         participant: `0@s.whatsapp.net`, 
@@ -126,8 +126,8 @@ global.invitacion = {
     }, 
     message: { 
         'contactMessage': { 
-            'displayName': 'Grupo AzureBotTeam', // Nombre a mostrar
-            'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Grupo;AzureBotTeam;;;\nFN:AzureBotTeam\nitem1.URL;type=INVITE:https://chat.whatsapp.com/XXXXXX\nitem1.X-ABLabel:Grupo de WhatsApp\nEND:VCARD` 
+            'displayName': 'GenesisBot-Ultra', // Nuevo nombre del grupo
+            'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Grupo;GenesisBot-Ultra;;;\nFN:GenesisBot-Ultra\nitem1.URL;type=INVITE:https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX\nitem1.X-ABLabel:Grupo de WhatsApp\nEND:VCARD` 
         } 
     } 
 };
