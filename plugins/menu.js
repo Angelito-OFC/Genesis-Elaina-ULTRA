@@ -92,7 +92,7 @@ Soy un sistema automatizado (WhatsApp Bot) que puede ayudar a hacer algo, buscar
 `.trimStart(),
     header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
     body: '*┊ ➫* %cmd %islimit %isPremium',
-    footer: ' ︶︶︶︶︶︶︶︶︶︶︶︶',
+    footer: ' ︶︶︶︶︶︶︶︶︶︶︶︶\n\n',
     after: `*Nota:* Escribe .menu <categoría> para seleccionar un menu en específico\n✧ Ejemplo: .menu tools`
 }
 
