@@ -2,7 +2,7 @@
 by nov
  type plugins esm
 */
-import fetch from 'node-fetch';
+/* import fetch from 'node-fetch';
 let handler = async (m, {
     conn,
     text,
@@ -60,4 +60,4 @@ handler.help = ['ytmp4']
 handler.command = ['ytmp4|ytv|ytvideo']
 handler.tags = ['main']
 
-export default handler
+export default handler */
