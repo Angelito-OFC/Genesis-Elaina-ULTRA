@@ -93,7 +93,7 @@ Soy un sistema automatizado (WhatsApp Bot) que puede ayudar a hacer algo, buscar
     header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
     body: '*┊ ➫* %cmd %islimit %isPremium',
     footer: ' ︶︶︶︶︶︶︶︶︶︶︶︶\n\n',
-    after: `*Nota:* Escribe .menu <categoría> para seleccionar un menu en específico\n✧ Ejemplo: .menu tools`
+    after: `> ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε`,
 }
 
 let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
@@ -153,6 +153,7 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
             let text = menuList.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), 
                 (_, name) => '' + replace[name])
 
+await m.react('🤍')
 conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
 
 /*            await conn.relayMessage(m.chat, {
@@ -228,6 +229,7 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo
         let text = menuCategory.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), 
             (_, name) => '' + replace[name])
 
+await m.react('🤍')
 conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
 
 /*        await conn.relayMessage(m.chat, {
