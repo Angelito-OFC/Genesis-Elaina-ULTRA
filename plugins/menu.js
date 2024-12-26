@@ -230,7 +230,7 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo
             (_, name) => '' + replace[name])
 
 await m.react('🤍')
-conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), null, fake)
+conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), m, fake)
 
 /*        await conn.relayMessage(m.chat, {
             extendedTextMessage:{
