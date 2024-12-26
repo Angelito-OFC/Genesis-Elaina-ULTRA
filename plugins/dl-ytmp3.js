@@ -1,4 +1,4 @@
-import yts from 'yt-search';
+/* import yts from 'yt-search';
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) throw `*Por favor ingresa un texto*\nEjemplo:\n${usedPrefix + command} https://youtu.be/QSvaCSt8ixs`;
 
