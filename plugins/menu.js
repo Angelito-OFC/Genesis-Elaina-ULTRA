@@ -78,12 +78,7 @@ const allTags = {
 }
 
 const defaultMenu = {
-    before: `
-Hola %name
-Soy un sistema automatizado (WhatsApp Bot) que puede ayudar a hacer algo, buscar y obtener datos/información sólo a través de WhatsApp.
-
-◦ *Libreria:* Baileys
-◦ *Funcion:* Assistant
+    before: `*${ucapan()} \`%name\`*
 
 ┌  ◦ Rutina : %uptime
 │  ◦ Fecha : %date
