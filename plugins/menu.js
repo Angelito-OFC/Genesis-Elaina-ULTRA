@@ -228,7 +228,7 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo
         let text = menuCategory.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), 
             (_, name) => '' + replace[name])
 
-conn.sendFile(m.chat, "https://pomf2.lain.la/f/7b5qzd8.png", 'menu.jpg', estilo(text), global.fliveLoc2, null)
+conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
 
 /*        await conn.relayMessage(m.chat, {
             extendedTextMessage:{
