@@ -255,7 +255,7 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = /^(menu|help)$/i
+handler.command = /^(menu|help|menú)$/i
 handler.exp = 3
 
 export default handler;
