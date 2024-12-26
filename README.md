@@ -1,5 +1,3 @@
-<div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
 </div>
 <h4 align="center">🔴 KAGUYA SAMA <br>   create by Lexic-team</h4>
 <div align="center">
