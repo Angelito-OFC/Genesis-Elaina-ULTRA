@@ -58,10 +58,10 @@ let estilo = (text, style = 1) => {
 
 const allTags = {
   all: "MENU COMPLETO",
-  main: " 🌌 「 \`PRINCIPAL\` 」 🌌",
-  downloader: "📥 「 \`DOWNLOADER\` 」 📥",
-  jadibot: "🤖 「 \`JADIBOT\` 」 🤖",
-  rpg: "🎮 「 \`RPG\` 」 🎮",
+  main: " 🌟 「 `PRINCIPAL` 」 🌟",
+  downloader: "📥 「 \`DOWNLOADER` 」 📥",
+  jadibot: "🤖 「 `JADIBOT` 」 🤖",
+  rpg: "🎮 「 `RPG` 」 🎮",
   ai: "🧠 「 `AI` 」 🧠",
   search: "🔍 「 `SEARCH` 」 🔍",
   anime: "🌸 「 `ANIME` 」 🌸",
