@@ -30,7 +30,7 @@ Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. What
 <details>
  <summary><b> 🤍 Importante </b></summary>
 
-GenesisBot-MD recibe **soporte semanal** si llegas a ver un error **repetitivamente o presenta fallos** solo repórtelo para que lo solucionemos
+GenesisBot-MD cuenta con soporte semanal. Si identifica un error recurrente o algún fallo en su funcionamiento, no dude en reportarlo para que podamos solucionarlo a la brevedad.
 
 </details>
 
