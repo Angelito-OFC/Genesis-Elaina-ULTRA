@@ -58,7 +58,7 @@ let estilo = (text, style = 1) => {
 
 const allTags = {
   all: "MENU COMPLETO",
-  main: "MENU PRINCIPAL",
+  main: " 🌌 「 \`PRINCIPAL\` 」 🌌",
   downloader: "MENU DOWNLOADER",
   jadibot: "MENU SUBBOTS",
   rpg: "MENU RPG",
@@ -90,9 +90,9 @@ Soy un sistema automatizado (WhatsApp Bot) que puede ayudar a hacer algo, buscar
 │  ◦ Hora : %time
 └  ◦ Prefijo Usado : *[ %p ]*
 `.trimStart(),
-    header: '┌  ◦ *%category*',
-    body: '│  ◦ %cmd %islimit %isPremium',
-    footer: '└  ',
+    header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
+    body: '*┊ ➫* %cmd %islimit %isPremium',
+    footer: ' ︶︶︶︶︶︶︶︶︶︶︶︶',
     after: `*Nota:* Escribe .menu <categoría> para seleccionar un menu en específico\n✧ Ejemplo: .menu tools`
 }
 
