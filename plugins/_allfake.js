@@ -118,19 +118,6 @@ global.fake = {
         // Fake 🤥
         global.ftroli = { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { itemCount: 9999999999999999999999999999999999999999999999999999999, status: 1, surface: 1, message: wm, orderTitle: wm, sellerJid: '0@s.whatsapp.net' } } }
 
-global.invite = { 
-    key: { 
-        fromMe: false, 
-        participant: `0@s.whatsapp.net`, 
-        ...(m.chat ? { remoteJid: `status@broadcast` } : {}) 
-    }, 
-    message: { 
-        'contactMessage': { 
-            'displayName': 'GenesisBot-Ultra', // Nuevo nombre del grupo
-            'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Grupo;GenesisBot-Ultra;;;\nFN:GenesisBot-Ultra\nitem1.URL;type=INVITE:https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX\nitem1.X-ABLabel:Grupo de WhatsApp\nEND:VCARD` 
-        } 
-    } 
-};
         global.fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': wm, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${wm},;;;\nFN:${wm},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./src/catalogo.png'), thumbnail: fs.readFileSync('./src/catalogo.png'), sendEphemeral: true } } }
         global.fvn = {
             key: {
