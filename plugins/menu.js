@@ -133,13 +133,13 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
         })
 
         if (!teks) {
-            let menuList = `${defaultMenu.before}\n\n┌  ◦ *LISTA DE MENUS*\n`
+            let menuList = `${defaultMenu.before}\n\n╭─(❀)❝┊ *_\`LISTA DE MENUS\`_* ┊❝(❀)\n`
             for (let tag of arrayMenu) {
                 if (tag && allTags[tag]) {
-                    menuList += `│  ◦ ${_p}menu ${tag}\n`
+                    menuList += `┊➫ ${_p}menu ${tag}\n`
                 }
             }
-            menuList += `└  \n\n${defaultMenu.after}`
+            menuList += `╰───────────── –\n\n${defaultMenu.after}`
 
             let replace = {
                 '%': '%',
