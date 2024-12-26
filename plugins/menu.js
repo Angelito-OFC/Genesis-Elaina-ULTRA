@@ -115,7 +115,8 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
 
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        
+        let totalreg = Object.keys(global.db.data.users).length
+        let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
         let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
             return {
                 help: Array.isArray(plugin.help) ? plugin.help : [plugin.help],
