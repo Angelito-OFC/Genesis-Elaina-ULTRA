@@ -153,7 +153,7 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
             let text = menuList.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), 
                 (_, name) => '' + replace[name])
 
-conn.sendFile(m.chat, "https://pomf2.lain.la/f/4gv01t8y.png", 'menu.jpg', estilo(text), global.fliveLoc2, null)
+conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
 
 /*            await conn.relayMessage(m.chat, {
             extendedTextMessage:{
@@ -165,7 +165,7 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/4gv01t8y.png", 'menu.jpg', estilo
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://pomf2.lain.la/f/4gv01t8y.png',
+                        thumbnailUrl: 'https://pomf2.lain.la/f/duptl67o.jpg',
                         sourceUrl: 'https://whatsapp.com/channel/0029VarbyoN2ZjCkcPW7q33F'
                     }
                 }, 
