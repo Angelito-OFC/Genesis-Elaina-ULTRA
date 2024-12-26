@@ -226,24 +226,6 @@ conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo
 
 await m.react('🤍')
 conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), m, null, fake)
-
-/*        await conn.relayMessage(m.chat, {
-            extendedTextMessage:{
-                text: text, 
-                contextInfo: {
-                    mentionedJid: [m.sender],
-                    externalAdReply: {
-                        title: date,
-                        mediaType: 1,
-                        previewType: 0,
-                        renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://pomf2.lain.la/f/7b5qzd8.png',
-                        sourceUrl: 'https://whatsapp.com/channel/0029VarbyoN2ZjCkcPW7q33F'
-                    }
-                }, 
-                mentions: [m.sender]
-            }
-        }, {})*/
     } catch (e) {
         conn.reply(m.chat, 'Perdon, hay un error con el menu', m)
         console.error(e)
