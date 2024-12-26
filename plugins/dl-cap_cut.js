@@ -1,4 +1,4 @@
-/* import axios from 'axios';
+import axios from 'axios';
 import md5 from 'crypto-js/md5.js';
 const BASE_URL = 'https://3bic.com';
 
@@ -57,4 +57,4 @@ handler.tags = ['downloader'];
 handler.help = ['capcut url'];
 handler.limit = true;
 
-export default handler; */
+export default handler;
