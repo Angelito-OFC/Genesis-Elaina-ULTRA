@@ -154,7 +154,7 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
                 (_, name) => '' + replace[name])
 
 await m.react('🤍')
-conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
+conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo(text), m, null, fake)
 
 /*            await conn.relayMessage(m.chat, {
             extendedTextMessage:{
