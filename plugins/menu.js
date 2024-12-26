@@ -40,7 +40,7 @@ let arrayMenu = [
 let estilo = (text, style = 1) => {
   var xStr = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
   var yStr = Object.freeze({
-    1: 'ᥲᑲᥴძᥱ𝖿gһіȷkᥣmᥒᥒ̃᥆⍴𝗊rs𝗍ᥙ᥎ᥕ᥊ᥡz1234567890'
+    1: 'ᥲᑲᥴძᥱ𝖿gһіȷkᥣmᥒ᥆⍴𝗊rs𝗍ᥙ᥎ᥕ᥊ᥡz1234567890'
   });
   var replacer = [];
   xStr.map((v, i) => replacer.push({
