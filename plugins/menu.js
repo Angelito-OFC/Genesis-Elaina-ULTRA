@@ -153,7 +153,7 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
             let text = menuList.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), 
                 (_, name) => '' + replace[name])
 
-conn.sendFile(m.chat, "https://pomf2.lain.la/f/duptl67o.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
+conn.sendFile(m.chat, "https://pomf2.lain.la/f/02stb604.jpg", 'menu.jpg', estilo(text), global.fliveLoc2, null)
 
 /*            await conn.relayMessage(m.chat, {
             extendedTextMessage:{
